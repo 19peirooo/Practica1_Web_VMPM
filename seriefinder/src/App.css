@@ -49,11 +49,18 @@
 #buscador {
   background-color: antiquewhite;
   border-radius: 10px;
+  width: 60vw;
+  height: auto;
+  padding: 1rem;
 }
 
 #buscador h1 {
   color: cadetblue;
-  margin: 0.5rem;
   font-family: 'MomoSignature',cursive;
   text-align: center;
+}
+
+#buscador p {
+  color: black;
+  margin: 1rem;
 }

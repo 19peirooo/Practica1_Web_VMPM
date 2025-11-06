@@ -1,17 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState,useEffect } from 'react'
 import './App.css'
 import SearchForm from './components/SearchForm'
+import SeriesList from './components/SeriesList'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [series, setSeries] = useState([])
+  const [query, setQuery] = useState('')
+
+  const transform_data = (data) => {
+    const transformed_data = data.map(item => ({
+        nombre: item.show.name,
+        img: item.show.image?.original ?? null,
+        resumen: item.show.summary
+    }))
+    setSeries(transformed_data);
+  }
+
+  useEffect(()=>{
+      if (!query) return;
+
+      fetch(`https://api.tvmaze.com/search/shows?q=${query}`)
+        .then (res => res.json())
+        .then (data => transform_data(data))
+
+    },[query])
 
   return (
     <>
       <div id='buscador'>
         <h1>Buscar Serie</h1>
-        <SearchForm></SearchForm>
+        <SearchForm onSearch={setQuery}></SearchForm>
+        <SeriesList series={series}></SeriesList>
       </div>
     </>
   )

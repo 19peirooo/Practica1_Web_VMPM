@@ -2,18 +2,18 @@ import {useForm} from 'react-hook-form'
 import { FaSearch } from "react-icons/fa";
 import "./styles/SearchForm.css"
 
-export default function SearchForm() {
+export default function SearchForm({onSearch}) {
     
     const {register, handleSubmit, reset} = useForm();
 
     const onSubmit = (data) => {
-        console.log(data.serie);
+        onSearch(data.query)
         reset();
     };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <input {...register('serie')} placeholder="Introduzca Serie a Buscar"></input>
+            <input {...register('query')} placeholder="Introduzca Serie a Buscar"></input>
             <button><FaSearch></FaSearch></button>
         </form>
     );
