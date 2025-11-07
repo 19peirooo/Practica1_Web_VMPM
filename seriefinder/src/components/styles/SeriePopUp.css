@@ -1,0 +1,21 @@
+.pop-up {
+    position: relative;
+    background-color: antiquewhite;
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+    width: 80vw;
+}
+
+.pop-up h1 {
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+}
+
+.pop-up #close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: black;
+    font-size: 1.5rem;
+}

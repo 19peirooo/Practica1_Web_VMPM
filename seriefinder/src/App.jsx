@@ -12,7 +12,8 @@ function App() {
     const transformed_data = data.map(item => ({
         nombre: item.show.name,
         img: item.show.image?.original ?? null,
-        resumen: item.show.summary
+        resumen: item.show.summary,
+        id: item.show.id
     }))
     setSeries(transformed_data);
   }
@@ -29,7 +30,7 @@ function App() {
   return (
     <>
       <div id='buscador'>
-        <h1>Buscar Serie</h1>
+        <h1 className='titulo'>Buscar Serie</h1>
         <SearchForm onSearch={setQuery}></SearchForm>
         <SeriesList series={series}></SeriesList>
       </div>

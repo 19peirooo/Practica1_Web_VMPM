@@ -54,7 +54,7 @@
   padding: 1rem;
 }
 
-#buscador h1 {
+.titulo {
   color: cadetblue;
   font-family: 'MomoSignature',cursive;
   text-align: center;
