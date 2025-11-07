@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'MomoSignature';
+  src: url("./assets/fonts/MomoSignature-Regular.ttf");
+}
+
+#cast-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+    margin: 0.5rem;
+    background-color: olivedrab;
+    padding: 0.3rem;
+    border: solid;
+    border-color: black;
+    border-radius: 8px;
+}
+
+#cast-container img {
+    height: 80%;
+    width: 10%;
+}
+
+#cast-container span {
+    flex: 1;
+    text-align: center;
+    font-family: "MomoSignature", cursive;
+}
