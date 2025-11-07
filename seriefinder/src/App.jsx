@@ -13,7 +13,8 @@ function App() {
         nombre: item.show.name,
         img: item.show.image?.original ?? null,
         resumen: item.show.summary,
-        id: item.show.id
+        id: item.show.id,
+        favourite: false
     }))
     setSeries(transformed_data);
   }
@@ -27,12 +28,22 @@ function App() {
 
     },[query])
 
+    const handleFavourite = (id) => {
+      const modified_series = series.map(item => {
+        if (item.id === id) {
+          item.favourite = !item.favourite;
+        }
+        return item;
+      })
+      setSeries(modified_series);
+    }
+
   return (
     <>
       <div id='buscador'>
         <h1 className='titulo'>Buscar Serie</h1>
         <SearchForm onSearch={setQuery}></SearchForm>
-        <SeriesList series={series}></SeriesList>
+        <SeriesList series={series} onFavourite={handleFavourite}></SeriesList>
       </div>
     </>
   )
