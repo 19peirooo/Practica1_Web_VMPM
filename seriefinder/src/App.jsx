@@ -7,6 +7,7 @@ function App() {
   
   const [series, setSeries] = useState([])
   const [query, setQuery] = useState('')
+  const [favourites,setFavourites] = useState([])
 
   const transform_data = (data) => {
     const transformed_data = data.map(item => ({
@@ -32,6 +33,12 @@ function App() {
       const modified_series = series.map(item => {
         if (item.id === id) {
           item.favourite = !item.favourite;
+          if (item.favourite) {
+            setFavourites([...favourites,item])
+          } else {
+            const filtered_favourites = favourites.filter(item => item.id != id);
+            setFavourites(filtered_favourites)
+          }
         }
         return item;
       })
@@ -44,6 +51,10 @@ function App() {
         <h1 className='titulo'>Buscar Serie</h1>
         <SearchForm onSearch={setQuery}></SearchForm>
         <SeriesList series={series} onFavourite={handleFavourite}></SeriesList>
+      </div>
+      <div id='favoritos'>
+        <h1 className='titulo'>Favoritos</h1>
+        <SeriesList series={favourites} onFavourite={handleFavourite}></SeriesList>
       </div>
     </>
   )
